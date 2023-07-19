@@ -46,6 +46,7 @@ header {
 .step-label {
   font-family: Archivo Narrow;
   font-size: 12px;
+  font-weight: 600;
 }
 
 .step-button {
