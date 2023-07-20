@@ -24,17 +24,17 @@ function updatePhase(partial: Partial<PipelinePhase>) {
 </script>
 
 <template>
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-name">{{ phase.name }}</div>
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-name">{{ phase.name }}</div>
       <CheckSwitch v-model="phaseActive" />
     </div>
-    <div class="panel-content"></div>
+    <div class="phase-content"></div>
   </div>
 </template>
 
 <style scoped>
-.panel {
+.phase {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -46,12 +46,12 @@ function updatePhase(partial: Partial<PipelinePhase>) {
   mask-image: linear-gradient(black calc(100% - 150px), transparent 100%);
 }
 
-.panel-header {
+.phase-header {
   margin: 10px;
   margin-bottom: 0;
 }
 
-.panel-name {
+.phase-name {
   line-height: normal;
   text-transform: uppercase;
   font-weight: 600;
@@ -59,7 +59,7 @@ function updatePhase(partial: Partial<PipelinePhase>) {
   margin-bottom: 13px;
 }
 
-.panel-content {
+.phase-content {
   width: 100%;
   min-height: 175px;
   border-radius: 10px;
