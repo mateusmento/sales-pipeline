@@ -1,23 +1,19 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import type { IPipelineType } from '@/types/pipeline-type.type';
 import PipelineType from './PipelineType.vue';
+import { usePipelineTypes } from '@/stores/pipeline-types.store';
 
-defineProps<{
-  types: IPipelineType[];
-}>();
-
-const selected = ref<IPipelineType>();
+const pipelineTypes = usePipelineTypes();
 </script>
 
 <template>
   <div class="pipeline-types">
     <PipelineType
-      v-for="ptype of types"
-      :key="ptype.name"
-      :type="ptype"
-      :selected="selected?.name === ptype.name"
-      @click="selected = ptype"
+      v-for="(pipelineType, i) of pipelineTypes.pipelineTypes"
+      :key="pipelineType.name"
+      :type="pipelineType"
+      @update:type="pipelineTypes.pipelineTypes[i] = $event"
+      :selected="pipelineTypes.selected?.name === pipelineType.name"
+      @click="pipelineTypes.selected = pipelineType"
     />
   </div>
 </template>
@@ -29,4 +25,3 @@ const selected = ref<IPipelineType>();
   margin-bottom: 58px;
 }
 </style>
-../../types/pipeline-type.type
