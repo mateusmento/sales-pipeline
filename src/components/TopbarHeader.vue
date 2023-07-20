@@ -31,7 +31,7 @@ function url(path: string) {
     <RouterLink v-if="typeof route.meta.nextStep === 'string'" :to="route.meta.nextStep">
       <button class="next-button">Next</button>
     </RouterLink>
-    <button v-else class="next-button not-visiable">Next</button>
+    <button v-else class="next-button not-visible">Next</button>
   </header>
 </template>
 
@@ -59,7 +59,7 @@ header {
   color: white;
 }
 
-.not-visiable {
+.not-visible {
   visibility: hidden;
 }
 </style>
