@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
+import CheckSwitch from './CheckSwitch.vue';
+
 interface PipelinePhase {
   name: string;
   active: boolean;
@@ -10,6 +13,11 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:phase']);
 
+const phaseActive = computed({
+  get: () => props.phase.active,
+  set: (value) => updatePhase({ active: value }),
+});
+
 function updatePhase(partial: Partial<PipelinePhase>) {
   emit('update:phase', { ...props.phase, ...partial });
 }
@@ -19,11 +27,7 @@ function updatePhase(partial: Partial<PipelinePhase>) {
   <div class="panel">
     <div class="panel-header">
       <div class="panel-name">{{ phase.name }}</div>
-      <div
-        class="check-switch"
-        :class="{ active: phase.active }"
-        @click="updatePhase({ active: !phase.active })"
-      ></div>
+      <CheckSwitch v-model="phaseActive" />
     </div>
     <div class="panel-content"></div>
   </div>
@@ -60,28 +64,5 @@ function updatePhase(partial: Partial<PipelinePhase>) {
   min-height: 175px;
   border-radius: 10px;
   border: 1px solid #e9d9ff;
-}
-
-.check-switch {
-  display: flex;
-  width: 114px;
-  height: 22px;
-  border-radius: 200px;
-  background: #e9d9ff;
-  transition: 200ms;
-}
-
-.check-switch.active::after {
-  margin-left: calc(100% - 42px);
-}
-
-.check-switch::after {
-  content: '';
-  display: block;
-  width: 42px;
-  height: 22px;
-  border-radius: 200px;
-  background: #dabfff;
-  transition: 200ms;
 }
 </style>

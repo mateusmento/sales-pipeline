@@ -3,8 +3,6 @@ import PipelinePhase from '@/lib/components/PipelinePhase.vue';
 import PipelineType from '@/lib/components/PipelineType.vue';
 import { ref } from 'vue';
 
-const active = ref(false);
-
 const pipelineTypes = ref([
   { name: 'Basic', active: true },
   { name: 'Advanced' },
@@ -12,7 +10,7 @@ const pipelineTypes = ref([
   { name: 'Custom' },
 ]);
 
-const phases = [
+const phases = ref([
   {
     name: 'Lead',
     active: false,
@@ -37,7 +35,7 @@ const phases = [
     name: 'Closed',
     active: false,
   },
-];
+]);
 </script>
 
 <template>
@@ -49,7 +47,7 @@ const phases = [
       <PipelineType v-for="ptype of pipelineTypes" :key="ptype.name" :type="ptype" />
     </div>
     <div class="panels">
-      <PipelinePhase v-for="phase of phases" :key="phase.name" :phase="phase" />
+      <PipelinePhase v-for="(phase, i) of phases" :key="phase.name" v-model:phase="phases[i]" />
     </div>
   </main>
 </template>
