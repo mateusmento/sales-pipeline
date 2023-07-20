@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import Checkbox from '@/lib/components/Checkbox.vue';
-
-interface PipelineType {
-  name: string;
-  active: boolean;
-}
+import type { PipelineType } from './pipeline-type.type';
 
 const props = defineProps<{
   type: PipelineType;
