@@ -3,6 +3,26 @@ import IconChecked from '@/lib/icons/IconChecked.vue';
 import { ref } from 'vue';
 const active = ref(false);
 const pipelineTypes = ref(['Basic', 'Advanced', 'Expert', 'Custom']);
+const panels = [
+  {
+    name: 'Lead',
+  },
+  {
+    name: 'RFP In Progress',
+  },
+  {
+    name: 'Submitted',
+  },
+  {
+    name: 'Won',
+  },
+  {
+    name: 'Lost',
+  },
+  {
+    name: 'Closed',
+  },
+];
 </script>
 
 <template>
@@ -20,8 +40,11 @@ const pipelineTypes = ref(['Basic', 'Advanced', 'Expert', 'Custom']);
       </div>
     </div>
     <div class="panels">
-      <div v-for="panel of [1, 2, 3, 4]" :key="panel" class="panel">
-        <div class="check-switch" :class="{ active }" @click="active = !active"></div>
+      <div v-for="panel of panels" :key="panel.name" class="panel">
+        <div class="panel-header">
+          <div class="panel-name">{{ panel.name }}</div>
+          <div class="check-switch" :class="{ active }" @click="active = !active"></div>
+        </div>
         <div class="panel-content"></div>
       </div>
     </div>
@@ -54,18 +77,31 @@ main {
 .panel {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   width: 222px;
-  height: 300px;
+  height: 450px;
   padding: 5px;
   background-color: #f7f1ff;
   border-radius: 15px;
-  mask-image: linear-gradient(black calc(100% - 60px), transparent 100%);
+  mask-image: linear-gradient(black calc(100% - 150px), transparent 100%);
+}
+
+.panel-header {
+  margin: 10px;
+  margin-bottom: 0;
+}
+
+.panel-name {
+  line-height: normal;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #46426d;
+  margin-bottom: 15px;
 }
 
 .panel-content {
   width: 100%;
-  height: 175px;
+  min-height: 175px;
   border-radius: 10px;
   border: 1px solid #e9d9ff;
 }
