@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PipelinePhase from '@/lib/components/PipelinePhase.vue';
 import PipelineType from '@/lib/components/PipelineType.vue';
 import { ref } from 'vue';
 
@@ -11,24 +12,30 @@ const pipelineTypes = ref([
   { name: 'Custom' },
 ]);
 
-const panels = [
+const phases = [
   {
     name: 'Lead',
+    active: false,
   },
   {
     name: 'RFP In Progress',
+    active: false,
   },
   {
     name: 'Submitted',
+    active: false,
   },
   {
     name: 'Won',
+    active: false,
   },
   {
     name: 'Lost',
+    active: false,
   },
   {
     name: 'Closed',
+    active: false,
   },
 ];
 </script>
@@ -42,13 +49,7 @@ const panels = [
       <PipelineType v-for="ptype of pipelineTypes" :key="ptype.name" :type="ptype" />
     </div>
     <div class="panels">
-      <div v-for="panel of panels" :key="panel.name" class="panel">
-        <div class="panel-header">
-          <div class="panel-name">{{ panel.name }}</div>
-          <div class="check-switch" :class="{ active }" @click="active = !active"></div>
-        </div>
-        <div class="panel-content"></div>
-      </div>
+      <PipelinePhase v-for="phase of phases" :key="phase.name" :phase="phase" />
     </div>
   </main>
 </template>
@@ -82,60 +83,5 @@ main {
 .panels {
   display: flex;
   gap: 15px;
-}
-
-.panel {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 222px;
-  height: 450px;
-  padding: 5px;
-  background-color: #f7f1ff;
-  border-radius: 15px;
-  mask-image: linear-gradient(black calc(100% - 150px), transparent 100%);
-}
-
-.panel-header {
-  margin: 10px;
-  margin-bottom: 0;
-}
-
-.panel-name {
-  line-height: normal;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #46426d;
-  margin-bottom: 13px;
-}
-
-.panel-content {
-  width: 100%;
-  min-height: 175px;
-  border-radius: 10px;
-  border: 1px solid #e9d9ff;
-}
-
-.check-switch {
-  display: flex;
-  width: 114px;
-  height: 22px;
-  border-radius: 200px;
-  background: #e9d9ff;
-  transition: 200ms;
-}
-
-.check-switch.active::after {
-  margin-left: calc(100% - 42px);
-}
-
-.check-switch::after {
-  content: '';
-  display: block;
-  width: 42px;
-  height: 22px;
-  border-radius: 200px;
-  background: #dabfff;
-  transition: 200ms;
 }
 </style>
