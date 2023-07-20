@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import PipelinePhase from '@/lib/components/PipelinePhase.vue';
-import PipelineType from '@/lib/components/PipelineType.vue';
 import { ref } from 'vue';
+import PipelinePhase from '@/lib/components/PipelinePhase.vue';
+import PipelineTypes from '@/lib/components/pipeline-type/PipelineTypes.vue';
 
 const pipelineTypes = ref([
   { name: 'Basic', active: true },
@@ -42,11 +42,6 @@ const phases = ref([
     color: 'gray',
   },
 ]);
-
-function togglePipelineType(type: any) {
-  for (const pipelineType of pipelineTypes.value)
-    if (pipelineType.name !== type.name) pipelineType.active = false;
-}
 </script>
 
 <template>
@@ -54,14 +49,7 @@ function togglePipelineType(type: any) {
     <div class="headline">
       Please select the type of sales pipeline that best fits to you company
     </div>
-    <div class="pipeline-types">
-      <PipelineType
-        v-for="(ptype, i) of pipelineTypes"
-        :key="ptype.name"
-        v-model:type="pipelineTypes[i]"
-        @toggle="togglePipelineType"
-      />
-    </div>
+    <PipelineTypes :types="pipelineTypes" />
     <div class="panels">
       <PipelinePhase v-for="(phase, i) of phases" :key="phase.name" v-model:phase="phases[i]" />
     </div>
@@ -86,12 +74,6 @@ main {
   font-weight: 700;
   color: #2d3748;
   margin-bottom: 38px;
-}
-
-.pipeline-types {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 58px;
 }
 
 .panels {

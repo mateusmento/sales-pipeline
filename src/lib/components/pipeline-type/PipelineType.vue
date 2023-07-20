@@ -1,26 +1,28 @@
 <script lang="ts" setup>
 import Checkbox from '@/lib/components/Checkbox.vue';
 import type { IPipelineType } from './pipeline-type.type';
+import { computed } from 'vue';
 
 const props = defineProps<{
   type: IPipelineType;
+  selected: boolean;
 }>();
 
-const emit = defineEmits(['update:type', 'toggle']);
+const emit = defineEmits(['update:type']);
+
+const active = computed({
+  get: () => props.type.active,
+  set: (value) => updateType({ active: value }),
+});
 
 function updateType(partial: Partial<IPipelineType>) {
   emit('update:type', { ...props.type, ...partial });
 }
-
-function toggle() {
-  updateType({ active: !props.type.active });
-  emit('toggle', props.type);
-}
 </script>
 
 <template>
-  <div class="type" :class="{ active: type.active }" @click="toggle">
-    <Checkbox @click.stop="" />
+  <div class="type" :class="{ active: selected }">
+    <Checkbox @click.stop="" v-model="active" />
     <div>{{ type.name }}</div>
     <div class="triangle"></div>
   </div>
