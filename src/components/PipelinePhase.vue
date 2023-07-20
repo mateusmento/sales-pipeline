@@ -39,8 +39,8 @@ function updatePhase(partial: Partial<IPipelinePhase>) {
   flex-direction: column;
   gap: 10px;
   width: 222px;
-  height: 450px;
   padding: 5px;
+  padding-bottom: 209px;
   background-color: #f7f1ff;
   border-radius: 15px;
   mask-image: linear-gradient(black calc(100% - 150px), transparent 100%);
@@ -61,7 +61,7 @@ function updatePhase(partial: Partial<IPipelinePhase>) {
 
 .phase-content {
   width: 100%;
-  min-height: 175px;
+  min-height: 375px;
   border-radius: 10px;
   border: 1px solid #e9d9ff;
 }

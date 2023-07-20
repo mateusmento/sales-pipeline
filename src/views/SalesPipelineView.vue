@@ -39,7 +39,7 @@ main {
   margin-left: 10px;
   margin-right: 10px;
   border-radius: 20px;
-  height: 798px;
+  min-height: 798px;
   padding: 28px;
 }
 
