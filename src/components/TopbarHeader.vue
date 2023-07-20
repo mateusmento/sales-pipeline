@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { RouterLink, useRoute } from 'vue-router';
 import Step from './Step.vue';
+import { opportunityDetailsRoute, salesPipelineRoute } from '@/app/router';
 
 const route = useRoute();
 
@@ -13,18 +14,18 @@ function url(path: string) {
   <header>
     <img :src="url('../assets/ProjectMark.svg')" />
     <div class="steps">
-      <RouterLink to="/settings/sales-pipeline">
+      <RouterLink :to="salesPipelineRoute.path">
         <Step
           :order="1"
           label="Sales Pipeline Settings"
-          :active="route.path.endsWith('sales-pipeline')"
+          :active="route.path === salesPipelineRoute.path"
         />
       </RouterLink>
-      <RouterLink to="/settings/opportunity-details">
+      <RouterLink :to="opportunityDetailsRoute.path">
         <Step
           :order="2"
           label="Opportunity Details Settings"
-          :active="route.path.endsWith('opportunity-details')"
+          :active="route.path === opportunityDetailsRoute.path"
         />
       </RouterLink>
     </div>

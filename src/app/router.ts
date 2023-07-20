@@ -1,4 +1,17 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
+
+export const salesPipelineRoute: RouteRecordRaw = {
+  path: '/settings/sales-pipeline',
+  component: () => import('@/views/SalesPipelineView.vue'),
+  meta: {
+    nextStep: '/settings/opportunity-details',
+  },
+};
+
+export const opportunityDetailsRoute: RouteRecordRaw = {
+  path: '/settings/opportunity-details',
+  component: () => import('@/views/OpportunityDetailsView.vue'),
+};
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,19 +26,7 @@ const router = createRouter({
       name: 'settings',
       component: () => import('@/views/SettingsView.vue'),
       redirect: '/settings/sales-pipeline',
-      children: [
-        {
-          path: '/settings/sales-pipeline',
-          component: () => import('@/views/SalesPipelineView.vue'),
-          meta: {
-            nextStep: '/settings/opportunity-details',
-          },
-        },
-        {
-          path: '/settings/opportunity-details',
-          component: () => import('@/views/OpportunityDetailsView.vue'),
-        },
-      ],
+      children: [salesPipelineRoute, opportunityDetailsRoute],
     },
   ],
 });
