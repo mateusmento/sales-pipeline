@@ -3,24 +3,30 @@ import Checkbox from '@/lib/components/Checkbox.vue';
 
 interface PipelineType {
   name: string;
-  active?: boolean;
+  active: boolean;
 }
 
-defineProps<{
+const props = defineProps<{
   type: PipelineType;
 }>();
+
+const emit = defineEmits(['update:type']);
+
+function updateType(partial: Partial<PipelineType>) {
+  emit('update:type', { ...props.type, ...partial });
+}
 </script>
 
 <template>
-  <div class="toolbox" :class="{ active: !!type.active }">
-    <Checkbox />
+  <div class="type" :class="{ active: type.active }" @click="updateType({ active: !type.active })">
+    <Checkbox @click.stop="" />
     <div>{{ type.name }}</div>
     <div class="triangle"></div>
   </div>
 </template>
 
 <style scoped>
-.toolbox {
+.type {
   position: relative;
   display: flex;
   gap: 15px;
@@ -32,17 +38,18 @@ defineProps<{
   border-radius: 10px;
   background-color: white;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
-.toolbox:not(.active):hover {
+.type:not(.active):hover {
   background-color: #edf2f7;
 }
 
-.toolbox.active {
-  border: 3px solid #2462d1;
+.type.active {
+  border: 2px solid #2462d1;
 }
 
-.toolbox.active .triangle {
+.type.active .triangle {
   position: absolute;
   bottom: 0;
   left: 50%;

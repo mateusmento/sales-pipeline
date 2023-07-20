@@ -5,9 +5,9 @@ import { ref } from 'vue';
 
 const pipelineTypes = ref([
   { name: 'Basic', active: true },
-  { name: 'Advanced' },
-  { name: 'Expert' },
-  { name: 'Custom' },
+  { name: 'Advanced', active: false },
+  { name: 'Expert', active: false },
+  { name: 'Custom', active: false },
 ]);
 
 const phases = ref([
@@ -44,7 +44,11 @@ const phases = ref([
       Please select the type of sales pipeline that best fits to you company
     </div>
     <div class="pipeline-types">
-      <PipelineType v-for="ptype of pipelineTypes" :key="ptype.name" :type="ptype" />
+      <PipelineType
+        v-for="(ptype, i) of pipelineTypes"
+        :key="ptype.name"
+        v-model:type="pipelineTypes[i]"
+      />
     </div>
     <div class="panels">
       <PipelinePhase v-for="(phase, i) of phases" :key="phase.name" v-model:phase="phases[i]" />
