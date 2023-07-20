@@ -61,7 +61,7 @@ function updatePhase(partial: Partial<IPipelinePhase>) {
 
 .phase-content {
   width: 100%;
-  min-height: 375px;
+  min-height: 175px;
   border-radius: 10px;
   border: 1px solid #e9d9ff;
 }
