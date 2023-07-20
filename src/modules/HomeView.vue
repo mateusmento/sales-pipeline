@@ -69,25 +69,26 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 42px;
   background-color: white;
   margin-left: 10px;
   margin-right: 10px;
   border-radius: 20px;
   height: 798px;
-  padding: 42px;
+  padding: 28px;
 }
 
 .headline {
   font-size: 26px;
-  font-weight: 600;
+  font-weight: 700;
   color: #2d3748;
+  margin-bottom: 38px;
 }
 
 .panels {
   display: flex;
-  gap: 20px;
+  gap: 15px;
 }
+
 .panel {
   display: flex;
   flex-direction: column;
@@ -110,7 +111,7 @@ main {
   text-transform: uppercase;
   font-weight: 600;
   color: #46426d;
-  margin-bottom: 15px;
+  margin-bottom: 13px;
 }
 
 .panel-content {
@@ -146,6 +147,7 @@ main {
 .pipeline-types {
   display: flex;
   gap: 10px;
+  margin-bottom: 58px;
 }
 
 .toolbox {
@@ -154,7 +156,7 @@ main {
   gap: 15px;
   width: fit-content;
   min-width: 210px;
-  padding: 9px 14px;
+  padding: 10.3px 14px;
   margin-bottom: 12px;
   border: 2px solid #e2e8f0;
   border-radius: 10px;
@@ -166,12 +168,12 @@ main {
   border: 3px solid #2462d1;
 }
 
-.triangle {
+.toolbox.active .triangle {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background-color: inherit;
   border-left: inherit;
   border-bottom: inherit;

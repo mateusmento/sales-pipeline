@@ -27,6 +27,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 21px;
+  margin-bottom: 8px;
 }
 
 .steps {
@@ -39,13 +40,13 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 2px;
   color: #062952;
 }
 
 .step-label {
   font-family: Archivo Narrow;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
 }
 
@@ -66,7 +67,7 @@ header {
 
 .step:not(.step--active) .step-button {
   background: white;
-  border: 2px solid #bfcfe0;
+  border: 1px solid #bfcfe0;
 }
 
 .next-button {
@@ -77,5 +78,6 @@ header {
   font-size: 14px;
   font-weight: 600;
   color: white;
+  margin-right: 22px;
 }
 </style>
