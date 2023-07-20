@@ -70,7 +70,8 @@ header {
 }
 
 .next-button {
-  padding: 13px 21px;
+  width: 74px;
+  height: 41px;
   border-radius: 40px;
   background: #2462d1;
   font-size: 14px;
