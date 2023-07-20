@@ -3,6 +3,8 @@
 This is the final solution to the ProjectMark coding challenge.
 You can run the app by running the following npm scripts:
 
+![Screenshot](https://raw.githubusercontent.com/mateusmento/sales-pipeline/main/screenshot.jpeg)
+
 ## Project setup
 
 ```sh
