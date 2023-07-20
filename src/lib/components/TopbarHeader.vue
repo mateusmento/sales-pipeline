@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import Step from './Step.vue';
+
 function url(path: string) {
   return new URL(path, import.meta.url).href;
 }
@@ -8,14 +10,8 @@ function url(path: string) {
   <header>
     <img :src="url('../../assets/ProjectMark.svg')" />
     <div class="steps">
-      <div class="step step--active">
-        <button class="step-button">1</button>
-        <div class="step-label">Sales Pipeline Settings</div>
-      </div>
-      <div class="step">
-        <button class="step-button">2</button>
-        <div class="step-label">Opportunity Details Settings</div>
-      </div>
+      <Step :order="1" label="Sales Pipeline Settings" :active="true" />
+      <Step :order="2" label="Opportunity Details Settings" :active="false" />
     </div>
     <button class="next-button">Next</button>
   </header>
@@ -33,41 +29,6 @@ header {
 .steps {
   display: flex;
   gap: 42px;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
-  color: #062952;
-}
-
-.step-label {
-  font-family: Archivo Narrow;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.step-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 18px;
-  width: 50px;
-  height: 50px;
-  font-size: 17px;
-}
-
-.step.step--active .step-button {
-  background: #2d3748;
-  color: white;
-}
-
-.step:not(.step--active) .step-button {
-  background: white;
-  border: 1px solid #bfcfe0;
 }
 
 .next-button {
