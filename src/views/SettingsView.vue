@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TopbarHeader from '@/lib/components/TopbarHeader.vue';
+import TopbarHeader from '@/components/TopbarHeader.vue';
 import { RouterView } from 'vue-router';
 </script>
 

@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { settingsRoutes } from '../modules/settings/routes.route';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +8,25 @@ const router = createRouter({
       name: 'home',
       redirect: '/settings/sales-pipeline',
     },
-    ...settingsRoutes,
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('@/views/SettingsView.vue'),
+      redirect: '/settings/sales-pipeline',
+      children: [
+        {
+          path: '/settings/sales-pipeline',
+          component: () => import('@/views/SalesPipelineView.vue'),
+          meta: {
+            nextStep: '/settings/opportunity-details',
+          },
+        },
+        {
+          path: '/settings/opportunity-details',
+          component: () => import('@/views/OpportunityDetailsView.vue'),
+        },
+      ],
+    },
   ],
 });
 

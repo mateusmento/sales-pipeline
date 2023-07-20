@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import PipelinePhase from '@/lib/components/PipelinePhase.vue';
-import PipelineTypes from '@/lib/components/pipeline-type/PipelineTypes.vue';
+import PipelinePhase from '@/components/PipelinePhase.vue';
+import PipelineTypes from '@/components/pipeline-type/PipelineTypes.vue';
 
 const pipelineTypes = ref([
   { name: 'Basic', active: true },
