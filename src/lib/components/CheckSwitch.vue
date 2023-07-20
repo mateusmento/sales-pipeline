@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import IconChecked from '../icons/IconChecked.vue';
+
 const props = defineProps<{
   modelValue: boolean;
   color: string;
@@ -18,7 +20,9 @@ function toggle() {
     class="check-switch"
     :class="{ active: modelValue, [color || DEFAULT_COLOR]: true }"
     @click="toggle()"
-  ></div>
+  >
+    <IconChecked class="icon-checked" />
+  </div>
 </template>
 
 <style scoped>
@@ -32,13 +36,19 @@ function toggle() {
   cursor: pointer;
 }
 
-.check-switch.active::after {
+.check-switch.active .icon-checked {
   margin-left: calc(100% - 42px);
 }
 
-.check-switch::after {
+.check-switch:not(.active) >>> .icon-checked svg {
+  display: none;
+}
+
+.check-switch .icon-checked {
   content: '';
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 42px;
   height: 22px;
   border-radius: 200px;
@@ -50,7 +60,7 @@ function toggle() {
   background: #e9d9ff;
 }
 
-.purple::after {
+.purple .icon-checked {
   background: #dabfff;
 }
 
@@ -58,7 +68,7 @@ function toggle() {
   background: #ffe4cc;
 }
 
-.orange::after {
+.orange .icon-checked {
   background: #ffd6b3;
 }
 
@@ -66,7 +76,7 @@ function toggle() {
   background: #bfe3ff;
 }
 
-.blue::after {
+.blue .icon-checked {
   background: #99d1ff;
 }
 
@@ -74,7 +84,7 @@ function toggle() {
   background: #aaecf2;
 }
 
-.cyan::after {
+.cyan .icon-checked {
   background: #81dde5;
 }
 
@@ -82,7 +92,7 @@ function toggle() {
   background: #ffd9e4;
 }
 
-.red::after {
+.red .icon-checked {
   background: #ffbfd2;
 }
 
@@ -90,7 +100,7 @@ function toggle() {
   background: #e2e8f0;
 }
 
-.gray::after {
+.gray .icon-checked {
   background: #cbd5e0;
 }
 </style>
