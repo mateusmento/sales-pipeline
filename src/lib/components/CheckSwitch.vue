@@ -40,7 +40,7 @@ function toggle() {
   margin-left: calc(100% - 42px);
 }
 
-.check-switch:not(.active) >>> .icon-checked svg {
+.check-switch:not(.active):deep() .icon-checked svg {
   display: none;
 }
 
