@@ -11,7 +11,7 @@ function url(path: string) {
 
 <template>
   <header>
-    <img :src="url('../../assets/ProjectMark.svg')" />
+    <img :src="url('../assets/ProjectMark.svg')" />
     <div class="steps">
       <RouterLink to="/settings/sales-pipeline">
         <Step
