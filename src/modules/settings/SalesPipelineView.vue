@@ -42,6 +42,11 @@ const phases = ref([
     color: 'gray',
   },
 ]);
+
+function togglePipelineType(type: any) {
+  for (const pipelineType of pipelineTypes.value)
+    if (pipelineType.name !== type.name) pipelineType.active = false;
+}
 </script>
 
 <template>
@@ -54,6 +59,7 @@ const phases = ref([
         v-for="(ptype, i) of pipelineTypes"
         :key="ptype.name"
         v-model:type="pipelineTypes[i]"
+        @toggle="togglePipelineType"
       />
     </div>
     <div class="panels">

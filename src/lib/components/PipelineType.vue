@@ -10,15 +10,20 @@ const props = defineProps<{
   type: PipelineType;
 }>();
 
-const emit = defineEmits(['update:type']);
+const emit = defineEmits(['update:type', 'toggle']);
 
 function updateType(partial: Partial<PipelineType>) {
   emit('update:type', { ...props.type, ...partial });
 }
+
+function toggle() {
+  updateType({ active: !props.type.active });
+  emit('toggle', props.type);
+}
 </script>
 
 <template>
-  <div class="type" :class="{ active: type.active }" @click="updateType({ active: !type.active })">
+  <div class="type" :class="{ active: type.active }" @click="toggle">
     <Checkbox @click.stop="" />
     <div>{{ type.name }}</div>
     <div class="triangle"></div>
