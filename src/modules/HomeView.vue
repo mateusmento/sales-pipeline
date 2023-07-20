@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import IconChecked from '@/lib/icons/IconChecked.vue';
 import { ref } from 'vue';
+
 const active = ref(false);
-const pipelineTypes = ref(['Basic', 'Advanced', 'Expert', 'Custom']);
+
+const pipelineTypes = ref([
+  { name: 'Basic', active: true },
+  { name: 'Advanced' },
+  { name: 'Expert' },
+  { name: 'Custom' },
+]);
+
 const panels = [
   {
     name: 'Lead',
@@ -31,11 +39,16 @@ const panels = [
       Please select the type of sales pipeline that best fits to you company
     </div>
     <div class="pipeline-types">
-      <div v-for="pipelineType of pipelineTypes" :key="pipelineType" class="toolbox">
-        <div class="checkbox">
+      <div
+        v-for="pipelineType of pipelineTypes"
+        :key="pipelineType.name"
+        class="toolbox"
+        :class="{ active: !!pipelineType.active }"
+      >
+        <div class="checkbox" :class="{ active: !!pipelineType.active }">
           <IconChecked />
         </div>
-        <div>{{ pipelineType }}</div>
+        <div>{{ pipelineType.name }}</div>
         <div class="triangle"></div>
       </div>
     </div>
@@ -68,6 +81,7 @@ main {
 .headline {
   font-size: 26px;
   font-weight: 600;
+  color: #2d3748;
 }
 
 .panels {
@@ -142,10 +156,14 @@ main {
   min-width: 210px;
   padding: 9px 14px;
   margin-bottom: 12px;
-  border: 3px solid #2462d1;
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
   background-color: white;
   box-sizing: border-box;
+}
+
+.toolbox.active {
+  border: 3px solid #2462d1;
 }
 
 .triangle {
@@ -157,7 +175,7 @@ main {
   background-color: inherit;
   border-left: inherit;
   border-bottom: inherit;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 4px;
   box-sizing: border-box;
   clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
   transform: translate(-50%, 50%) rotate(-45deg);
@@ -165,9 +183,15 @@ main {
 
 .checkbox {
   display: flex;
-  background: #2462d1;
-  padding: 5px 4px;
+  padding: 3px 2px;
   border-radius: 5px;
   align-self: center;
+  border: 2px solid #cbd5e0;
+  background: #fff;
+}
+
+.checkbox.active {
+  background: #2462d1;
+  border-color: #2462d1;
 }
 </style>
