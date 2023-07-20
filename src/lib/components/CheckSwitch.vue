@@ -22,6 +22,7 @@ function toggle() {
   border-radius: 200px;
   background: #e9d9ff;
   transition: 200ms;
+  cursor: pointer;
 }
 
 .check-switch.active::after {
