@@ -1,17 +1,12 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import CheckSwitch from './CheckSwitch.vue';
-
-interface PipelinePhase {
-  name: string;
-  active: boolean;
-  color: string;
-}
+import type { IPipelinePhase } from '@/types/pipeline-phase.type';
 
 const DEFAULT_COLOR = 'gray';
 
 const props = defineProps<{
-  phase: PipelinePhase;
+  phase: IPipelinePhase;
 }>();
 
 const emit = defineEmits(['update:phase']);
@@ -21,7 +16,7 @@ const phaseActive = computed({
   set: (value) => updatePhase({ active: value }),
 });
 
-function updatePhase(partial: Partial<PipelinePhase>) {
+function updatePhase(partial: Partial<IPipelinePhase>) {
   emit('update:phase', { ...props.phase, ...partial });
 }
 </script>
