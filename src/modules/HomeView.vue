@@ -164,6 +164,10 @@ main {
   box-sizing: border-box;
 }
 
+.toolbox:not(.active):hover {
+  background-color: #edf2f7;
+}
+
 .toolbox.active {
   border: 3px solid #2462d1;
 }
