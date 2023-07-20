@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+import { settingsRoutes } from '../modules/settings/routes.route';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -6,9 +7,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../modules/HomeView.vue')
+      redirect: '/settings/sales-pipeline',
     },
-  ]
-})
+    ...settingsRoutes,
+  ],
+});
 
-export default router
+export default router;
