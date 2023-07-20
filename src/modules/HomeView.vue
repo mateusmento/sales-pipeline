@@ -14,26 +14,32 @@ const phases = ref([
   {
     name: 'Lead',
     active: false,
+    color: 'purple',
   },
   {
     name: 'RFP In Progress',
     active: false,
+    color: 'orange',
   },
   {
     name: 'Submitted',
     active: false,
+    color: 'blue',
   },
   {
     name: 'Won',
     active: false,
+    color: 'cyan',
   },
   {
     name: 'Lost',
     active: false,
+    color: 'red',
   },
   {
     name: 'Closed',
     active: false,
+    color: 'gray',
   },
 ]);
 </script>
