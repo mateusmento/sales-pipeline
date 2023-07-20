@@ -40,7 +40,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 21px;
+  padding: 21px 30px;
   margin-bottom: 8px;
 }
 
