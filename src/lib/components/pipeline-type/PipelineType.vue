@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import Checkbox from '@/lib/components/Checkbox.vue';
-import type { PipelineType } from './pipeline-type.type';
+import type { IPipelineType } from './pipeline-type.type';
 
 const props = defineProps<{
-  type: PipelineType;
+  type: IPipelineType;
 }>();
 
 const emit = defineEmits(['update:type', 'toggle']);
 
-function updateType(partial: Partial<PipelineType>) {
+function updateType(partial: Partial<IPipelineType>) {
   emit('update:type', { ...props.type, ...partial });
 }
 

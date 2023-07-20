@@ -1,4 +1,4 @@
-export interface PipelineType {
+export interface IPipelineType {
   name: string;
   active: boolean;
 }
