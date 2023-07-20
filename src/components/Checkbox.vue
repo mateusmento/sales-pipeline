@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import IconChecked from '../icons/IconChecked.vue';
+import IconChecked from './icons/IconChecked.vue';
 
 const checked = ref(false);
 </script>

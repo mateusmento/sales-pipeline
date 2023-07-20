@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Checkbox from '@/lib/components/Checkbox.vue';
-import type { IPipelineType } from './pipeline-type.type';
+import Checkbox from '@/components/Checkbox.vue';
+import type { IPipelineType } from '@/types/pipeline-type.type';
 import { computed } from 'vue';
 
 const props = defineProps<{
@@ -67,3 +67,4 @@ function updateType(partial: Partial<IPipelineType>) {
   transform: translate(-50%, 50%) rotate(-45deg);
 }
 </style>
+../../types/pipeline-type.type

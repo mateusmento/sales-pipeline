@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import IconChecked from '../icons/IconChecked.vue';
+import IconChecked from './icons/IconChecked.vue';
 
 const props = defineProps<{
   modelValue: boolean;

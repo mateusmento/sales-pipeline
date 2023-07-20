@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import type { IPipelineType } from './pipeline-type.type';
+import type { IPipelineType } from '@/types/pipeline-type.type';
 import PipelineType from './PipelineType.vue';
 
 defineProps<{
@@ -29,3 +29,4 @@ const selected = ref<IPipelineType>();
   margin-bottom: 58px;
 }
 </style>
+../../types/pipeline-type.type
