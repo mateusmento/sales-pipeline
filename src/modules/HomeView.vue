@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconChecked from '@/lib/icons/IconChecked.vue';
+import Checkbox from '@/lib/components/Checkbox.vue';
 import { ref } from 'vue';
 
 const active = ref(false);
@@ -45,9 +45,7 @@ const panels = [
         class="toolbox"
         :class="{ active: !!pipelineType.active }"
       >
-        <div class="checkbox" :class="{ active: !!pipelineType.active }">
-          <IconChecked />
-        </div>
+        <Checkbox />
         <div>{{ pipelineType.name }}</div>
         <div class="triangle"></div>
       </div>
@@ -185,19 +183,5 @@ main {
   box-sizing: border-box;
   clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
   transform: translate(-50%, 50%) rotate(-45deg);
-}
-
-.checkbox {
-  display: flex;
-  padding: 3px 2px;
-  border-radius: 5px;
-  align-self: center;
-  border: 2px solid #cbd5e0;
-  background: #fff;
-}
-
-.checkbox.active {
-  background: #2462d1;
-  border-color: #2462d1;
 }
 </style>
